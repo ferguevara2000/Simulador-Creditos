@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Simulador de Créditos</title>
+  <link rel="stylesheet" href="cliente.component.css">
+</head>
+<body>
+  <nav>
+    <div class="logo">Inicio</div>
+    <div class="navbar-links">
+      <ul>
+        <li><a [routerLink]="'/login'" routerLinkActive="active">Iniciar sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <h1>Simulador de Créditos</h1>
+
+  <table>
+    <tr>
+      <td>
+        <label for="fecha">Fecha de Cálculo:</label>
+        <input type="date" id="fecha" name="fecha" value="{{ fechaActual | date: 'yyyy-MM-dd' }}" disabled>
+      </td>
+      <td>
+        <label for="amortizacion">Sistema de Amortización:</label>
+        <select id="amortizacion" name="amortizacion">
+          <option value="frances">Francés</option>
+          <option value="aleman">Alemán</option>
+          <option value="americano">Americano</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="tipoPersona">Tipo de Persona:</label>
+        <select id="tipoPersona" name="tipoPersona">
+          <option value="natural">Natural</option>
+          <option value="juridica">Jurídica</option>
+        </select>
+      </td>
+      <td>
+        <label for="producto">Producto:</label>
+        <select id="producto" name="producto">
+          <option value="creditoPersonal">Crédito Personal</option>
+          <option value="creditoHipotecario">Crédito Hipotecario</option>
+          <option value="creditoAutomotriz">Crédito Automotriz</option>
+        </select>
+      </td>
+      <td>
+        <label for="subproducto">Subproducto:</label>
+        <select id="subproducto" name="subproducto">
+          <option value="subproducto1">Subproducto 1</option>
+          <option value="subproducto2">Subproducto 2</option>
+          <option value="subproducto3">Subproducto 3</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" name="monto" min="0" required>
+      </td>
+      <td>
+        <label for="plazo">Plazo (en meses):</label>
+        <input type="number" id="plazo" name="plazo" min="1" required>
+      </td>
+    </tr>
+  </table>
+
+  <div class="botones">
+    <button id="calcular" type="submit">Calcular</button>
+    <button type="button" (click)="limpiarCampos()">Limpiar</button>
+  </div>
+  
+
+
+
+  <div class="resultados">
+    <!-- Aquí se mostrarán los resultados del cálculo -->
+  </div>
+  
+
+  <script src="script.js"></script>
+</body>
+</html>
