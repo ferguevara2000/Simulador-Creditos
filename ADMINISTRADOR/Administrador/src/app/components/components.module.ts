@@ -6,20 +6,28 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalComponent } from './modal/modal.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
     NavbarComponent,
-    TableComponent
+    TableComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
     ComponentsRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgSelectModule
   ],exports: [
-    HomeComponent
+    HomeComponent,
+    TableComponent
   ]
 })
 export class ComponentsModule { }

@@ -10,9 +10,9 @@ import { User } from '../models/user.model';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  url = 'http://localhost:4200'
   login = false
   token = ''
+  datos = 'No'
 
   userForm = new FormGroup({
     username: new FormControl(''),
@@ -33,12 +33,19 @@ export class LoginComponent {
 
   onSubmit(){
     this.userService.authentication(new User(this.username, this.password)).subscribe(data => {
-      this.login = false
+      const admin = data
+      const id = admin.id
+      const keys = Object.keys(admin)
       localStorage.setItem('IdAministrador', data);
-      this.router.navigate(['/home'])
+      console.log(admin)
+      if(keys.length > 0){
+        this.router.navigate(['/home'])
+      }
     }),(error:any) => {
       console.log(error)
     }
-    this.login = true
+    if(this.datos == 'No'){
+      this.login = true
+    }
   }
 }

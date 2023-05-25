@@ -1,0 +1,39 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Nuevo Asesor
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ingresar Nuevo Asesor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="asesorForm" (ngSubmit)="onSubmit()">
+            <label class="form-label">Id</label>
+            <input type="number" class="form-control" formControlName="id" [(ngModel)]="id">
+            <label class="form-label">Entidad</label>
+            <select class="form-select" [(ngModel)]="selectedBa"  formControlName="selectedBa">
+              <option  *ngFor="let entidad of bancos" [value]="entidad.id" >{{entidad.nombre}}</option>
+            </select>
+            <label class="form-label">Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre" [(ngModel)]="nombre">
+            <label class="form-label">Usuario</label>
+            <input type="text" class="form-control" formControlName="usuario" [(ngModel)]="usuario">
+            <label class="form-label">Contraseña</label>
+            <input type="password" class="form-control" formControlName="contrasena" [(ngModel)]="contrasena">
+  
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cerrar
+          </button>
+          <button type="submit" class="btn btn-primary" (click)="onSubmit()" data-bs-dismiss="modal">Guardar
+            Asesor</button>
+        </div>
+      </div>
+    </div>
+  </div>

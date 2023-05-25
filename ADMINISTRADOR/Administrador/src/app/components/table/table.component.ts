@@ -19,9 +19,11 @@ export class TableComponent {
 
   ngOnInit(): void {
   }
- abrir(rowId:number){
-  this.onAbrir.emit(rowId);
- }
+
+  abrir(object: any){
+      this.onAbrir.emit();
+  }
+
   deleteRow(rowId:number): void{
     Swal.fire({
       title: 'Esta Seguro de eliminar el registro?',
